@@ -1,5 +1,5 @@
 # detectty
-Detect freshly plugged tty devices.
+Detect freshly plugged `tty` devices.
 
 # Usage
 1. Make sure your device is unplugged.
