@@ -18,6 +18,6 @@ NEW_TTY_DEV='/dev/tty.xxxxxxxXXXXXXXXXX'
 # Requirements
 - Python3
 
-# Platform support
+# Supported Platforms
 - Linux
 - macOS
