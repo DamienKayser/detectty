@@ -14,3 +14,10 @@ Setting environment variable:
 NEW_TTY_DEV='/dev/tty.xxxxxxxXXXXXXXXXX'
 ```
 5. You can also use the freshly set `NEW_TTY_DEV` environment variable to reference your device.
+
+# Requirements
+- Python3
+
+# Platform support
+- Linux
+- macOS
