@@ -19,10 +19,6 @@ def detect():
             print("\n")
             print("Detected new device:")
             print(newDev)
-            print("")
-            print("Setting environment variable:")
-            os.environ["NEW_TTY_DEV"] = newDev
-            print("NEW_TTY_DEV='{0}'".format(os.environ["NEW_TTY_DEV"]))
             return newDev
 
 if __name__ == "__main__":
