@@ -1,6 +1,6 @@
 # detectty
 
-Detect freshly plugged `tty` devices.
+Detect freshly plugged serial devices.
 
 # Usage
 
@@ -19,3 +19,4 @@ Detect freshly plugged `tty` devices.
 
 - Linux
 - macOS
+- Windows

@@ -2,9 +2,10 @@
 
 import os
 import time
+from serial.tools import list_ports
 
 def getCurrentDevices():
-    return ["/dev/" + dev for dev in os.listdir("/dev") if "tty" in dev]
+    return list_ports.comports()
 
 def detect():
     print("Waiting for tty devices to be plugged in ...", end="", flush=True)
@@ -13,7 +14,7 @@ def detect():
         time.sleep(0.5)
         print(".", end="", flush=True)
         devAfter = getCurrentDevices()
-        diff = [dev for dev in devAfter if dev not in devBefore]
+        diff = [dev.device for dev in devAfter if dev not in devBefore]
         if len(diff) > 0:
             newDev = diff[0]
             print("\n")
