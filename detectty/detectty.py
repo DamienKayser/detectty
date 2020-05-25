@@ -8,7 +8,7 @@ def getCurrentDevices():
     return list_ports.comports()
 
 def detect():
-    print("Waiting for tty devices to be plugged in ...", end="", flush=True)
+    print("Waiting for device to be plugged in ...", end="", flush=True)
     devBefore = getCurrentDevices()
     while(True):
         time.sleep(0.5)
