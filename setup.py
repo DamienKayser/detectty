@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="detectty",
-    version="1.0.0",
+    version="1.1.1",
     author="Daniel Keller",
     author_email="develop@dkkeller.de",
     description="Detects freshly plugged serial devices.",
