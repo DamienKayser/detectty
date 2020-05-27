@@ -4,8 +4,21 @@ import os
 import time
 from serial.tools import list_ports
 
-def getCurrentDevices():
-    return list_ports.comports()
+def getCurrentDevices(filterDict=None):
+    """
+    Returns a (filtered) list of currently connected serial devices.
+    :param filterDict: The filter to apply
+    :type filterDict:  dict
+    """
+    devices = list_ports.comports()
+    if filterDict is not None:
+        def filterByDict(dev):
+            for key in filterDict:
+                if getattr(dev, str(key)) != filterDict[key]:
+                    return False
+            return True
+        return list(filter(filterByDict, devices))
+    return devices
 
 def detect(filterDict=None, timeout=None):
     """
@@ -29,7 +42,7 @@ def detect(filterDict=None, timeout=None):
             print("Detected new device:")
             print(newDev)
             return newDev
-        
+
         # If timeout is set: check devices by filter, if no new device was detected
         # If timeout is not set: wait for new device infinitely
         if timeout is not None:
@@ -37,22 +50,10 @@ def detect(filterDict=None, timeout=None):
                 timeout -= .5
                 continue
 
-            if filterDict is not None:
-                def filterByDict(dev):
-                    for key in filterDict:
-                        if getattr(dev, str(key)) != filterDict[key]:
-                            return False
-                    return True
-                devFiltered = list(filter(filterByDict, devAfter))
-                if len(devFiltered) > 0:
-                    print(devFiltered[0])
-                    return devFiltered[0]
-                else:
-                    print('\nNo matching device found for filter:\n\t' + str(filterDict))
-                    return None
-            else:
-                # Pretty pointless ;-) 
+            if filterDict is None:
+                # Pretty pointless ;-)
                 return None
+            return getCurrentDevices(filterDict=filterDict)[0]
 
 if __name__ == "__main__":
     detect()
